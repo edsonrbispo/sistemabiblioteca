@@ -1,10 +1,14 @@
 <?php
+
+    session_start();
+
     require_once $_SERVER['DOCUMENT_ROOT'] . "/database/DBConexao.php";
 
 class Usuario{
 
     protected $db;
     protected $table = "usuarios";
+
 
     public function __construct()
     {
@@ -14,14 +18,14 @@ class Usuario{
     /**
      * Buscar registro unico
      * @param int $id
-     * @return Usuario|null
+     * 
      */ 
-    public function buscar($id){
+    public function buscar($id_usuario){
 
         try{
-            $sql = "SELECT * FROM {$this->table} WHERE id=:id";
+            $sql = "SELECT * FROM {$this->table} WHERE id_usuario=:id_usuario";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(":id",$id, PDO::PARAM_INT);
+            $stmt->bindParam(":id_usuario",$id_usuario, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch(PDO::FETCH_OBJ);            
         }catch(PDOException $e)
@@ -60,9 +64,14 @@ class Usuario{
             $stmt->bindParam(':senha', $dados['senha']);
             $stmt->bindParam(':perfil', $dados['perfil']);
             $stmt->execute();
+
+            $_SESSION['sucesso'] = "Cadastro realizado com sucesso!";
+
             return true;
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: ".$e->getMessage();
+
+            $_SESSION['erro'] = "Erro ao cadastrar o usuário";
             return false;
         }
     }
@@ -74,16 +83,17 @@ class Usuario{
      * @param array $dados
      * @return bool
      */
-    public function editar($id, $dados){
+    public function editar($id_usuario, $dados){
         try {
-            $sql = "UPDATE {$this->table} SET nome = :nome, email = :email, senha = :senha, perfil = :perfil WHERE id = :id";
+            $sql = "UPDATE {$this->table} SET nome = :nome, email = :email, senha = :senha, perfil = :perfil WHERE id_usuario = :id_usuario";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':nome', $dados['nome']);
             $stmt->bindParam(':email', $dados['email']);
             $stmt->bindParam(':senha', $dados['senha']);
             $stmt->bindParam(':perfil', $dados['perfil']);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->execute();
+            $_SESSION['sucesso'] = "Usuário editado com sucesso!";
             return true;
         } catch (PDOException $e) {
             echo "Erro ao editar: ".$e->getMessage();
@@ -91,13 +101,15 @@ class Usuario{
         }
     }
 
+
     //Excluir usuário
-    public function excluir($id){
+    public function excluir($id_usuario){
         try {
-            $sql = "DELETE FROM {$this->table} WHERE id = :id";
+            $sql = "DELETE FROM {$this->table} WHERE id_usuario = :id_usuario";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt->bindParam(':id_usuario', $id_usuario, PDO::PARAM_INT);
             $stmt->execute();
+            $_SESSION['sucesso'] = "Usuário excluido com sucesso!";
             return true;
         } catch (PDOException $e) {
             echo "Erro ao excluir: ".$e->getMessage();
