@@ -1,0 +1,71 @@
+:root {
+    --primaria: #3e4095;
+    --secundaria: #00AFEE;
+    --laranja: #f58634;
+    --texto: #4b4b4d;
+    --label-categoria: #D9c505;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-family: 'Poppins', sans-serif;
+    color: var(--texto);
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+#cabecalho {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu ul {
+    display: flex;
+    list-style: none;
+}
+
+#menu ul li a {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #4b4b4d;
+    font-weight: 500;
+}
+
+.btn-secundario {
+    display: inline-block;
+    background-color: var(--secundaria);
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#banner {
+    background-image: url(../img/banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 300px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+#formProcurar {
+    background-color: #ffffff;
+}
