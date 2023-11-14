@@ -21,23 +21,30 @@
 
 <body>
 
-    <header id="cabecalho" class="container">
-        <div id="logotipo">
-            <h1><img src="assets/img/logotipo.png" alt="BookMeNow" height="30"></h1>
-        </div>
-        <nav id="menu">
-            <ul>
-                <li><a href="#">Categorias</a></li>
-                <li><a href="#">Sobre nós</a></li>
-                <li><a href="#">Contato</a></li>
-            </ul>
+    <div class="barra-topo">
+        <header id="cabecalho" class="container">
 
-        </nav>
-        <div id="botaoTopo">
-            <a href="#" class="btn-secundario">Login</a>
-            <a href="#" class="btn-secundario">Registrar</a>
-        </div>
-    </header>
+            <div id="botao-mobile">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+
+            <div id="logotipo">
+                <h1><img src="assets/img/logotipo.png" alt="BookMeNow" height="30"></h1>
+            </div>
+            <nav id="menu">
+                <ul>
+                    <li><a href="#">Categorias</a></li>
+                    <li><a href="#">Sobre nós</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+
+            </nav>
+            <div id="botaoTopo">
+                <a href="#" class="btn-secundario">Login</a>
+                <a href="#" class="btn-secundario">Registrar</a>
+            </div>
+        </header>
+    </div>
 
     <div id="banner">
         <div class="container">
@@ -74,45 +81,27 @@
             </div>
 
             <div class="lista-livros">
-                <div class="card-livro">
-                    <img src="assets/img/livro-css.png" alt="CSS">
-                    <h3>CSS Grid layout: Criando Layouts Profissionais</h3>
-                </div>
 
-                <div class="card-livro">
-                    <img src="assets/img/livro-html.png" alt="HTML e CSS">
-                    <h3>Html e CSS: Guia Prático</h3>
-                </div>
+                <?php for ($cont = 1; $cont <= 6; $cont++): ?>
 
-                <div class="card-livro">
-                    <img src="assets/img/livro-css.png" alt="CSS">
-                    <h3>CSS Grid layout: Criando Layouts Profissionais</h3>
-                </div>
+                    <div class="card-livro">
+                        <div class="capa">
+                            <img src="assets/img/livro-css.png" alt="CSS">
+                            <span class="legenda">Lançamento</span>
+                        </div>
+                        <h3>CSS Grid layout: Criando Layouts Profissionais</h3>
+                    </div>
 
-                <div class="card-livro">
-                    <img src="assets/img/livro-html.png" alt="HTML e CSS">
-                    <h3>Html e CSS: Guia Prático</h3>
-                </div>
+                    <div class="card-livro">
+                        <div class="capa">
+                            <img src="assets/img/livro-html.png" alt="HTML">
+                            <span class="black-friday">Black Friday</span>
+                        </div>
+                        <h3>Html e CSS: Guia Prático</h3>
+                    </div>
 
-                <div class="card-livro">
-                    <img src="assets/img/livro-css.png" alt="CSS">
-                    <h3>CSS Grid layout: Criando Layouts Profissionais</h3>
-                </div>
+                <?php endfor; ?>
 
-                <div class="card-livro">
-                    <img src="assets/img/livro-html.png" alt="HTML e CSS">
-                    <h3>Html e CSS: Guia Prático</h3>
-                </div>
-
-                <div class="card-livro">
-                    <img src="assets/img/livro-css.png" alt="CSS">
-                    <h3>CSS Grid layout: Criando Layouts Profissionais</h3>
-                </div>
-
-                <div class="card-livro">
-                    <img src="assets/img/livro-html.png" alt="HTML e CSS">
-                    <h3>Html e CSS: Guia Prático</h3>
-                </div>
             </div>
 
         </section>
@@ -153,7 +142,7 @@
     </footer>
 
 
-    <script src="assets/js/main.js"></script>
+    <script src="/assets/js/main.js"></script>
 </body>
 
 </html>
