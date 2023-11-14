@@ -12,7 +12,7 @@
 
 <main class="container mt-3 mb-3">
     <h1>Cadastrar Livros</h1>
-    <form action="cadastrar.php" method="post" class="row g-3" enctype="multipart/form-data">
+    <form action="cadastrar.php" method="post" class="row g-3">
         <div class="col-md-12">
             <label for="titulo" class="form-label">Título</label>
             <input type="text" name="titulo" id="titulo" class="form-control" required>
