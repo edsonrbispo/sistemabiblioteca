@@ -1,18 +1,18 @@
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/LivroController.php";
-    
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/cabecalho.php";  
+require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/LivroController.php";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/cabecalho.php";
 
 
-    $livroController = new LivroController();
+$livroController = new LivroController();
 
-    $livroController->cadastrarLivro();
-      
+$livroController->cadastrarLivro();
+
 ?>
 
 <main class="container mt-3 mb-3">
     <h1>Cadastrar Livros</h1>
-    <form action="cadastrar.php" method="post" class="row g-3">
+    <form action="cadastrar.php" method="post" class="row g-3" enctype="multipart/form-data">
         <div class="col-md-12">
             <label for="titulo" class="form-label">Título</label>
             <input type="text" name="titulo" id="titulo" class="form-control" required>
@@ -45,7 +45,7 @@
 
         <div class="col-md-6">
             <label for="capa" class="form-label">CAPA</label>
-            <input type="file" name="capa" id="capa" class="form-control">
+            <input type="file" name="capa" id="capa" class="form-control" accept="image/*">
         </div>
 
 
@@ -60,5 +60,5 @@
 
 
 <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/rodape.php";  
+require_once $_SERVER['DOCUMENT_ROOT'] . "/includes/rodape.php";
 ?>

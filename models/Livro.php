@@ -56,7 +56,7 @@ class Livro
     public function cadastrar($dados)
     {
         try {
-            $query = "INSERT INTO {$this->table} (titulo, autor, numero_pagina, preco, ano_publicacao, isbn) VALUES (:titulo, :autor, :numero_pagina, :preco, :ano_publicacao, :isbn)";
+            $query = "INSERT INTO {$this->table} (titulo, autor, numero_pagina, preco, ano_publicacao, isbn, capa) VALUES (:titulo, :autor, :numero_pagina, :preco, :ano_publicacao, :isbn, :capa)";
             $stmt = $this->db->prepare($query);
             $stmt->bindParam(':titulo', $dados['titulo']);
             $stmt->bindParam(':autor', $dados['autor']);
@@ -64,6 +64,7 @@ class Livro
             $stmt->bindParam(':preco', $dados['preco']);
             $stmt->bindParam(':ano_publicacao', $dados['ano_publicacao']);
             $stmt->bindParam(':isbn', $dados['isbn']);
+            $stmt->bindParam(':capa', $dados['capa']);
             $stmt->execute();
 
             $_SESSION['sucesso'] = "Cadastro realizado com sucesso!";
@@ -71,7 +72,7 @@ class Livro
             return true;
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: " . $e->getMessage();
-exit();
+            exit();
             $_SESSION['erro'] = "Erro ao cadastrar o livro";
             return false;
         }
@@ -86,7 +87,7 @@ exit();
     public function editar($id_livro, $dados)
     {
         try {
-            $sql = "UPDATE {$this->table} SET titulo = :titulo, autor = :autor, numero_pagina = :numero_pagina, preco = :preco, ano_publicacao = :ano_publicacao, isbn = :isbn WHERE id_livro = :id_livro";
+            $sql = "UPDATE {$this->table} SET titulo = :titulo, autor = :autor, numero_pagina = :numero_pagina, preco = :preco, ano_publicacao = :ano_publicacao, isbn = :isbn, capa = :capa WHERE id_livro = :id_livro";
             $stmt = $this->db->prepare($sql);
             $stmt->bindParam(':titulo', $dados['titulo']);
             $stmt->bindParam(':autor', $dados['autor']);
@@ -94,6 +95,7 @@ exit();
             $stmt->bindParam(':preco', $dados['preco']);
             $stmt->bindParam(':ano_publicacao', $dados['ano_publicacao']);
             $stmt->bindParam(':isbn', $dados['isbn']);
+            $stmt->bindParam(':capa', $dados['capa']);
             $stmt->bindParam(':id_livro', $id_livro, PDO::PARAM_INT);
             $stmt->execute();
             $_SESSION['sucesso'] = "Livro editado com sucesso!";
